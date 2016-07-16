@@ -1,7 +1,6 @@
 package com.coverxiaoeye.cyberdojo.primefactors;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PrimeFactors {

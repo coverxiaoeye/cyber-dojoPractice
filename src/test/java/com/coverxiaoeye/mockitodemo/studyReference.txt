@@ -1,0 +1,8 @@
+学习Mockito - Mock对象的行为验证
+http://hotdog.iteye.com/blog/908827
+Mockito（一）——入门篇
+http://my.oschina.net/angerbaby/blog/2
+Mockito(二)--实例篇
+http://my.oschina.net/angerbaby/blog/214972
+Mockito(三)--完整功能介绍
+http://my.oschina.net/angerbaby/blog/214991

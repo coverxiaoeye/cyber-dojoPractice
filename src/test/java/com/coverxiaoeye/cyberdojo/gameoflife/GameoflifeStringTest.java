@@ -1,3 +1,5 @@
+package com.coverxiaoeye.cyberdojo.gameoflife;
+
 import org.junit.*;
 import static org.junit.Assert.*;
 

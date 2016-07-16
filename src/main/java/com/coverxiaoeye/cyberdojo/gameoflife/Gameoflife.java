@@ -1,3 +1,4 @@
+package com.coverxiaoeye.cyberdojo.gameoflife;
 
 public class Gameoflife{
     //accept String input
