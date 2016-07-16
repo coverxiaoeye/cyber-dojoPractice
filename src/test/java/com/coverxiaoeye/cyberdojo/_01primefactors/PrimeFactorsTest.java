@@ -1,4 +1,4 @@
-package com.coverxiaoeye.cyberdojo.primefactors;
+package com.coverxiaoeye.cyberdojo._01primefactors;
 
 import org.junit.*;
 import static org.junit.Assert.*;

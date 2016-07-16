@@ -1,4 +1,4 @@
-package com.coverxiaoeye.cyberdojo.gameoflife;
+package com.coverxiaoeye.cyberdojo._04gameoflife;
 
 import org.junit.*;
 import static org.junit.Assert.*;

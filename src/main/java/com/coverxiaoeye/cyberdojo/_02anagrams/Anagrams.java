@@ -1,4 +1,4 @@
-package com.coverxiaoeye.cyberdojo.anagrams;
+package com.coverxiaoeye.cyberdojo._02anagrams;
 
 import java.util.List;
 import java.util.ArrayList;

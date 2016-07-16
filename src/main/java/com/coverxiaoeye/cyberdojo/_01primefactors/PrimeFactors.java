@@ -1,4 +1,4 @@
-package com.coverxiaoeye.cyberdojo.primefactors;
+package com.coverxiaoeye.cyberdojo._01primefactors;
 
 import java.util.ArrayList;
 import java.util.List;

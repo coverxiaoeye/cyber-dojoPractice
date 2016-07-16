@@ -1,4 +1,4 @@
-package com.coverxiaoeye.cyberdojo.anagrams;
+package com.coverxiaoeye.cyberdojo._02anagrams;
 
 import org.junit.*;
 import static org.junit.Assert.*;
