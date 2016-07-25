@@ -1,33 +1,19 @@
 package com.coverxiaoeye.cyberdojo._04gameoflife;
 
+
 public class Gameoflife{
     //accept String input
     public static String calcNextGen(String input) {
         if(input ==null||input =="")return input;
         
         //step1:conver to char[][] array
-        String lines[] = input.split("\n");
-        String[] dimension = lines[0].split(" ");
-        int rows = Integer.parseInt(dimension[0]);
-        int colums = Integer.parseInt(dimension[1]);
-        char[][] inputarr = new char[rows][colums];
-        for (int i = 0;i<rows;i++){
-            inputarr[i] = lines[i+1].toCharArray();
-        }
+        char[][] inputarr = string2Array(input);
         
-       //step2:call method
+       //step2:call internal method
        char[][] resultarr = calcNextGen(inputarr);
        
        //step3:conver to String
-       StringBuilder resultstr = new StringBuilder();
-        resultstr.append(rows).append(" ").append(colums).append("\n");
-        for (int m = 0; m <rows ; m++) {
-            for (int n = 0; n < colums; n++) {
-                resultstr.append(resultarr[m][n]);
-            }
-            resultstr.append("\n");
-        }
-       return resultstr.toString();
+       return array2String(resultarr);
        
     }
     
@@ -72,5 +58,32 @@ public class Gameoflife{
            }
        }
        return liveNeibs;
+    }
+    //deserialize to array
+    private static char[][] string2Array(String input){
+        String lines[] = input.split("\n");
+        String[] dimension = lines[0].split(" ");
+        int rows = Integer.parseInt(dimension[0]);
+        int colums = Integer.parseInt(dimension[1]);
+        char[][] inputarr = new char[rows][colums];
+        for (int i = 0;i<rows;i++){
+            inputarr[i] = lines[i+1].toCharArray();
+        }
+        return inputarr;
+    }
+
+    //serialize for output
+    private static String array2String(char[][] resultarr){
+        StringBuilder resultstr = new StringBuilder();
+        int rows = resultarr.length;
+        int colums = resultarr[0].length;
+        resultstr.append(rows).append(" ").append(colums).append("\n");
+        for (int m = 0; m <rows ; m++) {
+            for (int n = 0; n < colums; n++) {
+                resultstr.append(resultarr[m][n]);
+            }
+            resultstr.append("\n");
+        }
+        return resultstr.toString();
     }
 }
