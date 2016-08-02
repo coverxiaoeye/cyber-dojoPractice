@@ -1,42 +1,60 @@
 package com.coverxiaoeye.cyberdojo._07numbernames;
-public class NumberNames{
 
+enum LargeNumberName {
+    BILLION("billion") { public int getFactor() { return 1000 * 1000 * 1000;}},
+    MILLION("million") { public int getFactor() {return 1000 * 1000;}},
+    THOUSAND("thousand") { public int getFactor() {return 1000;}},
+    BASE("") { public int getFactor() {return 1;}};
+    private String name;
+    private LargeNumberName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public abstract int getFactor();
+}
+
+public class NumberNames{
+    private static final String GROUP_SEPERATOR = ", ";
+    private static final String AFTER_HUNDRED_SEPERATOR = " and ";
     public static String spell(int number) {
         if(number == 0) return "zero";
         StringBuilder names = new StringBuilder();
-        int remain = number%1000;
-        names.append(spellThreeDigitGroup(remain));
-        int thousands = number/1000;
-        int thousandsRemain = thousands%1000;
-        int millions = thousands/1000;
-        if(thousandsRemain>0)  {
-            if(names.length()>0)  names.insert(0,", ");
-            names.insert(0," thousand");
-            names.insert(0,spellThreeDigitGroup(thousandsRemain));
-        }
-        if(millions>0)  {
-            if(names.length()>0)  names.insert(0,", ");
-            names.insert(0," million");
-            names.insert(0,spellThreeDigitGroup(millions));
+        for (LargeNumberName largeNumber : LargeNumberName.values()){
+            int factor = largeNumber.getFactor();
+            int quotient = number/factor;
+            if(quotient>0){
+                if(names.length()>0)  names.append(GROUP_SEPERATOR);
+                names.append(spellThreeDigitsGroup(quotient));
+                names.append(" "+largeNumber.getName());
+                number = number%factor;
+            }
+            if(number==0) break;
         }
         return names.toString().trim();
     }
 
-    private static String spellThreeDigitGroup(int number){
-        if (number==0) return "";
+    private static String spellThreeDigitsGroup(int number){
         StringBuilder names = new StringBuilder();
         int hundres = number/100;
         int remain = number%100;
         if(hundres > 0 ) {
             names.append(getNamesOfNumberUnder20(hundres));
             names.append(" hundred");
-            if(remain != 0) names.append(" and ");
+            if(remain != 0) names.append(AFTER_HUNDRED_SEPERATOR);
         }
-        if(remain<20){
-            names.append(getNamesOfNumberUnder20(remain));
+        names.append(spellTwoDigitsGroup(remain));
+        return names.toString().trim();
+    }
+
+    private static String spellTwoDigitsGroup(int number){
+        StringBuilder names = new StringBuilder();
+        if(number<20){
+            names.append(getNamesOfNumberUnder20(number));
         }else{
-            int tens = remain/10;
-            int units = remain%10;
+            int tens = number/10;
+            int units = number%10;
             names.append(getNamesOfTensDigit(tens));
             names.append(" ");
             names.append(getNamesOfNumberUnder20(units));
