@@ -1,6 +1,7 @@
 package com.coverxiaoeye.cyberdojo._08romannumerals;
 
 import java.util.*;
+import static java.lang.Integer.*;
 
 public class RomanNumerals{
 
@@ -35,17 +36,42 @@ public class RomanNumerals{
         specialNumeralMap.put(900, "CM");
         specialNumeralMap.put(1000 , "M" );
     }
+    public static RomanNumBuilder[] builders 
+                            = {new RomanNumBuilder(10,100),
+                               new RomanNumBuilder(100,1000),
+                               new RomanNumBuilder(1000,MAX_VALUE)};
     public static String getRomanNumeral(int num) {
         if(specialNumeralMap.containsKey(num))
             return specialNumeralMap.get(num);
-        if(num<100)
-            return getRomanNumeral(num/10*10)+getRomanNumeral(num%10);
-        if(num<1000)
-            return getRomanNumeral(num/100*100)+getRomanNumeral(num%100);
-        if(num%1000==0){
-            return getRomanNumeral(1000)+getRomanNumeral(num-1000);
-        }
-        return getRomanNumeral(num/1000*1000)+getRomanNumeral(num%1000);
-        
+        if(num>1000 && num%1000==0)
+            return getMultiThousandRomanNum(num);
+        for(RomanNumBuilder builder:builders)
+            if(builder.canBuild(num))
+                return builder.toRomanNum(num);
+        return "";
     }
+    private static String getMultiThousandRomanNum(int num){
+        int count = num/1000;
+        String result = "";
+        String onethousandNumeral = specialNumeralMap.get(1000);
+        for(int i=0;i<count;i++)
+            result = result + onethousandNumeral;
+        return result;
+    }
+}
+class RomanNumBuilder{
+    private int factor;
+    private int limit;
+    RomanNumBuilder(int factor, int limit){
+        this.factor = factor;
+        this.limit = limit;
+    }
+    String toRomanNum(int num){
+        return RomanNumerals.getRomanNumeral(num/factor*factor)
+                        +RomanNumerals.getRomanNumeral(num%factor);
+    }
+    boolean canBuild(int num){
+        return num<limit;
+    }
+    
 }
