@@ -1,3 +1,5 @@
+package com.coverxiaoeye.cyberdojo._09countcoins;
+
 public class CountCoins {
 
     public static int[] coinValues = {1, 5, 10, 25};
