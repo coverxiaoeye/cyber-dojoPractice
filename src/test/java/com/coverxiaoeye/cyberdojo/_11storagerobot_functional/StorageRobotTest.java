@@ -60,7 +60,7 @@ public class StorageRobotTest {
         storage.add(new Product("pro3", Color.YELLOW, 6));
 
         List<Product> expected = new ArrayList<Product>();
-        ;
+
         expected.add(new Product("pro1", Color.RED, 15));
         expected.add(new Product("pro2", Color.GREEN, 8));
         //List<Product> actual = StorageRobot.filterRedOrGreenProducts(storage);

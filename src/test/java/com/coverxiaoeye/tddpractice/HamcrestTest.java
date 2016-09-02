@@ -33,9 +33,10 @@ public class HamcrestTest {
         assertThat(Arrays.asList("my", "mine"), hasItem("my"));
         // hasItems: 包含多个元素
         assertThat(Arrays.asList("my", "mine", "your"), hasItems("your", "my"));
-        // is: is(equalTo(x))或is(instanceOf(clazz.class))的简写
+        // is: is(equalTo(x))的简写
         assertThat("myname", is("myname"));
-        assertThat("mynmae", is(String.class));
+        // isA: is(instanceOf(clazz.class))的简写
+        assertThat("mynmae", isA(String.class));
         // anything(): 任何情况下，都匹配正确
         assertThat("myname", anything());
         // not: 否为真，相当于！
