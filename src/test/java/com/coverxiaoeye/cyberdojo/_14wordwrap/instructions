@@ -1,0 +1,14 @@
+Your task is to write a function that takes two arguments,
+a string（由1到多个英文单词组成，单词之间以空格分隔） and an integer width.
+
+The function returns the string, but with line breaks
+inserted at just the right places to make sure that no line
+is longer than the column number.
+You try to break lines at word boundaries.
+
+Like a word processor, break the line by replacing
+the last space in a line with a newline.
+
+说明：如果一个单词自己的长度就超过了宽度，则因为必须保证一行不能超过给定的宽度，则可能会把单词切分开。
+
+注意：和字处理软件一样，通过把此行最后的空格变成换行符进行换行。比如两个单词之间有多个空格分隔，只会把这几个空格的最后一个空格变成换行符，其它空格依然保留，作为前面单词的一部分。
