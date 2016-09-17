@@ -1,3 +1,5 @@
+package com.coverxiaoeye.cyberdojo._14wordwrap;
+
 public class WordWrapUtil{
 
     public static String wordwrap(String str,int width) {

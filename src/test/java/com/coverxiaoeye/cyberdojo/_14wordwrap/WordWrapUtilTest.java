@@ -1,3 +1,5 @@
+package com.coverxiaoeye.cyberdojo._14wordwrap;
+
 import org.junit.*;
 import static org.junit.Assert.*;
 
