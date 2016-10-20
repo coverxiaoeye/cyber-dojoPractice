@@ -1,3 +1,5 @@
+package com.coverxiaoeye.cyberdojo._03combinednumber_GA;
+
 import java.util.*;
 
 public class CombinedNumber{
@@ -5,7 +7,7 @@ public class CombinedNumber{
     private static final Comparator<String> COMBINE_ASC_COMPARATOR
         = new Comparator<String>(){
             public int compare(String s1, String s2) {  
-                return (s1+s2).compareTo(s2+s1); 
+                return (s1+s2).compareTo(s2+s1); //Greedy Algorithm
             }
         };
     public static String getLargestCombinedNum(int[] inputArr) {
@@ -18,7 +20,7 @@ public class CombinedNumber{
         String[] strArr = new String[intArr.length];
         for(int i=0;i<intArr.length;i++){
             if(intArr[i]<0)
-                throw new IllegalArgumentException("input contains negative integers");
+                throw new IllegalArgumentException("input array contains negative integer(s)");
             strArr[i] = String.valueOf(intArr[i]);
         }
         return strArr;
