@@ -1,5 +1,6 @@
 package com.coverxiaoeye.cyberdojo._17regularexpression;
 
+
 public class RegExpParser{
 
     public static String match(String regex, String input) {
@@ -49,6 +50,10 @@ public class RegExpParser{
                 if(subMatched!=null){
                     matched = str.charAt(0) + subMatched;
                 }
+            }
+        }else{
+            if(regex.length()>1&&regex.charAt(1)=='*'){
+                matched = findMatch(regex.substring(2),str);
             }
         }
         return matched;
