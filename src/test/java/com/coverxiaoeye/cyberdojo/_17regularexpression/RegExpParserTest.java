@@ -75,6 +75,13 @@ public class RegExpParserTest {
         assertEquals(expected, actual);
     }
     @Test
+    public void test_pattern_StarAtTheBeginningAndEnd_notmatch() {
+        String expected = "(aa)";
+        String actual = RegExpParser.match("d*aab*","aa");
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void test_pattern_combineDotAndStar_case1() {
         String expected = "(asdf)";
         String actual = RegExpParser.match("..*","asdf");
