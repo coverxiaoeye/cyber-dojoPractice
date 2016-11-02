@@ -61,8 +61,8 @@ public class RegExpParserTest {
         String actual = RegExpParser.match("b.d+","abcddedf");
         assertEquals(expected, actual);
     }
-    
-     @Test
+
+    @Test
     public void test_pattern_aStar_match_aab() {
         String expected = "(aa)b";
         String actual = RegExpParser.match("a*","aab");
@@ -91,6 +91,31 @@ public class RegExpParserTest {
     public void test_pattern_combineDotAndStar_case2() {
         String expected = "se(fdfsde)";
         String actual = RegExpParser.match("f.*d.","sefdfsde");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test_pattern_backslash() {
+        String expected = "a(*s)df";
+        String actual = RegExpParser.match("\\*s","a*sdf");
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void test_pattern_inCharacterSet() {
+        String expected = "asd(3)45dsf";
+        String actual = RegExpParser.match("[0-9]","asd345dsf");
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void test_pattern_cobine_inCharacterSet_plus() {
+        String expected = "asd(345)dsf";
+        String actual = RegExpParser.match("[0-9]+","asd345dsf");
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void test_pattern_cobine_inCharacterSet_star() {
+        String expected = "asd(345)dsf";
+        String actual = RegExpParser.match("[0-9]*","asd345dsf");
         assertEquals(expected, actual);
     }
 }
